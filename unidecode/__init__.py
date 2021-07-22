@@ -32,7 +32,7 @@ class UnidecodeError(ValueError):
         self.index = index
 
 
-def unidecode_expect_ascii(string: str, errors: str = 'ignore', replace_str: str = '?') -> str:
+def unidecode_expect_ascii(string: str, errors: str = 'ignore', replace_str: str = '?', ignore = '') -> str:
     """Transliterate an Unicode object into an ASCII string
 
     >>> unidecode("\u5317\u4EB0")
@@ -63,9 +63,9 @@ def unidecode_expect_ascii(string: str, errors: str = 'ignore', replace_str: str
     else:
         return string
 
-    return _unidecode(string, errors, replace_str)
+    return _unidecode(string, errors, replace_str, ignore)
 
-def unidecode_expect_nonascii(string: str, errors: str = 'ignore', replace_str: str = '?') -> str:
+def unidecode_expect_nonascii(string: str, errors: str = 'ignore', replace_str: str = '?', ignore = '') -> str:
     """Transliterate an Unicode object into an ASCII string
 
     >>> unidecode("\u5317\u4EB0")
@@ -74,7 +74,7 @@ def unidecode_expect_nonascii(string: str, errors: str = 'ignore', replace_str: 
     See unidecode_expect_ascii.
     """
 
-    return _unidecode(string, errors, replace_str)
+    return _unidecode(string, errors, replace_str, ignore)
 
 unidecode = unidecode_expect_ascii
 
@@ -114,11 +114,15 @@ def _get_repl_str(char: str) -> Optional[str]:
     else:
         return None
 
-def _unidecode(string: str, errors: str, replace_str:str) -> str:
+def _unidecode(string: str, errors: str, replace_str:str, ignore:str) -> str:
     retval = []
 
     for index, char in enumerate(string):
         repl = _get_repl_str(char)
+
+        if char in ignore:
+            retval.append(char)
+            continue
 
         if repl is None:
             if errors == 'ignore':
