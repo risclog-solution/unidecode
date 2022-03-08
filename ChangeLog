@@ -3,6 +3,12 @@
 
 2022-02-19	unidecode 1.3.3
 	* Command-line utility now reads input line-by-line, making
+1.3.4.rl1 (unreleased)
+----------------------
+
+- Nothing changed yet.
+
+
 1.3.4.rl0 (2022-03-08)
 
 2021-09-16	unidecode 1.3.2
