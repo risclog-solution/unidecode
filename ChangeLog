@@ -31,7 +31,7 @@
 	  new errors='...' argument.
 	* Added some missing ligatures and quotation marks in U+1F6xx and
 	  U+27xx ranges.
-	* Add PEP 561-style type information (thanks to Pascal Corpet)
+1.3.4+rl0 (2022-03-08)
 	* Support for Python 2 and 3.5 to be removed in next release.
 
 2020-12-20	unidecode 1.1.2
