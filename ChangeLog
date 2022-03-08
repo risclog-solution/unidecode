@@ -6,8 +6,6 @@
 
 2022-02-19	unidecode 1.3.3
 	* Command-line utility now reads input line-by-line, making
-1.3.4rl1 (2022-03-08)
----------------------
 
 2021-09-16	unidecode 1.3.2
 	* Re-upload because PyPI was missing Requires-Python metadata for
